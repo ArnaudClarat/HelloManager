@@ -2,13 +2,14 @@ package be.ifosupwavre.info.poo.app;
 
 import be.ifosupwavre.info.poo.pojo.Recipe;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ConApp {
     public static void main(String[] args) {
-        var recipes = new Recipe[2];
-        for (int i = 0; i < recipes.length; i++) {
-                recipes[i] = new Recipe("Omelette");
-        }
-
+        Set<Recipe> recipes = new HashSet<>();
+        recipes.add(new Recipe("Omelette"));
+        recipes.add(new Recipe("Burger"));
         for (Recipe recipe : recipes) {
             System.out.println(recipe.getTitle());
         }
