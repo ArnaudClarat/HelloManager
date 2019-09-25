@@ -1,5 +1,8 @@
 package be.ifosupwavre.info.poo.pojo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Recipe {
     private String title;
     private String subtitle;
@@ -7,9 +10,17 @@ public class Recipe {
     private Difficulty difficulty;
     private int time;
     private int expDay;
-    private Ingredient[] ingredients;
+    private Set<Ingredient> ingredients;
 
-    public Recipe(String title, String subtitle, Category category, Difficulty difficulty, int time, int expDay, Ingredient[] ingredients) {
+    /*
+        addIngredient()
+        removeIngredient()
+        updateIngredient()
+        showIngredient(numberOfPerson)
+        ...
+     */
+
+    public Recipe(String title, String subtitle, Category category, Difficulty difficulty, int time, int expDay, Set<Ingredient> ingredients) {
         this.title = title;
         this.subtitle = subtitle;
         this.category = category;
@@ -71,11 +82,16 @@ public class Recipe {
         this.expDay = expDay;
     }
 
-    public Ingredient[] getIngredients() {
+    public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    private void setIngredients(Ingredient[] ingredients) {
+    private void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    @Override
+    public String toString() {
+        return title + " " + subtitle;
     }
 }

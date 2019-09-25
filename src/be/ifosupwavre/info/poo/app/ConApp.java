@@ -10,8 +10,7 @@ public class ConApp {
         Set<Recipe> recipes = new HashSet<>();
         recipes.add(new Recipe("Omelette"));
         recipes.add(new Recipe("Burger"));
-        for (Recipe recipe : recipes) {
-            System.out.println(recipe.getTitle());
-        }
+
+        recipes.forEach(System.out::println);
     }
 }
