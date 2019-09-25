@@ -1,7 +1,5 @@
 package be.ifosupwavre.info.poo.pojo;
 
-import java.util.Map;
-
 public class Recipe {
     private String title;
     private String subtitle;
@@ -19,6 +17,10 @@ public class Recipe {
         this.time = time;
         this.expDay = expDay;
         this.ingredients = ingredients;
+    }
+
+    public Recipe(String title) {
+        this.title = title;
     }
 
     public String getTitle() {
