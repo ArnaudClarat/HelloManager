@@ -1,6 +1,7 @@
 package be.ifosupwavre.info.poo.pojo;
 
 import java.sql.Time;
+import java.util.AbstractCollection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -8,22 +9,22 @@ import java.util.stream.Collectors;
 
 public class RecipeManager {
     /*
-        Set recipe
+            Set recipe
 
-        addRecipe()
-        removeRecipe()
-        updateRecipe()
-        containsRecipe()
-        getRecipes()
-        filterByTags()
-        filterByTitle()
-        filterBy...
-         */
-    public Set<Recipe> recipes = new HashSet<>();
+            addRecipe()
+            removeRecipe()
+            updateRecipe()
+            containsRecipe()
+            getRecipes()
+            filterByTags()
+            filterByTitle()
+            filterBy...
+             */
+    private Set<Recipe> recipes = new HashSet<>();
     public Set<Recipe> selection = new HashSet<>();
 
     public void addRecipe(Recipe args) {
-        recipes.add(new Recipe(args));
+        recipes.add(args);
     }
 
     public boolean containsRecipe(Recipe args) {
@@ -59,17 +60,17 @@ public class RecipeManager {
             var tags = tag.split(" ");
             for (var t : tags) {
                 // TODO Changer "Objects..nonNull"
-                recipes.parallelStream().filter(Objects::nonNull).collect(Collectors.toSet());
+                selection.addAll(recipes.parallelStream().filter(Objects::nonNull).collect(Collectors.toSet()));
             }
         }
+        return selection;
     }
 
     public Set<Recipe> filterByTitle(String title) {
-        for (recipe : getRecipes()) {
+        for (Recipe recipe : getRecipes()) {
             // TODO Changer "Objects..nonNull"
-            recipes.parallelStream().filter(Objects::nonNull);
+            selection.addAll(recipes.parallelStream().filter(Objects::nonNull).collect(Collectors.toSet()));
         }
+        return selection;
     }
-
-
 }

@@ -20,6 +20,7 @@ public class Recipe {
         ...
      */
 
+/*
     public Recipe(String title, String subtitle, Category category, Difficulty difficulty, int time, int expDay, Set<Ingredient> ingredients) {
         this.title = title;
         this.subtitle = subtitle;
@@ -29,6 +30,7 @@ public class Recipe {
         this.expDay = expDay;
         this.ingredients = ingredients;
     }
+*/
 
     public Recipe(String title) {
         this.title = title;

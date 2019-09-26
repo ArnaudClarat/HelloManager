@@ -1,16 +1,16 @@
 package be.ifosupwavre.info.poo.app;
 
 import be.ifosupwavre.info.poo.pojo.Recipe;
-
-import java.util.HashSet;
-import java.util.Set;
+import be.ifosupwavre.info.poo.pojo.RecipeManager;
 
 public class ConApp {
     public static void main(String[] args) {
-        Set<Recipe> recipes = new HashSet<>();
-        recipes.add(new Recipe("Omelette"));
-        recipes.add(new Recipe("Burger"));
+        RecipeManager recipeManager = new RecipeManager();
 
-        recipes.forEach(System.out::println);
+        recipeManager.addRecipe(new Recipe("Burger"));
+        recipeManager.addRecipe(new Recipe("Omelette"));
+        recipeManager.addRecipe(new Recipe("Steak"));
+
+        System.out.println(recipeManager.filterByTitle("Burger"));
     }
 }
