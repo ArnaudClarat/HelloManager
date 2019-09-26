@@ -1,7 +1,5 @@
 package be.ifosupwavre.info.poo.pojo;
 
-import java.sql.Time;
-import java.util.AbstractCollection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -68,8 +66,7 @@ public class RecipeManager {
 
     public Set<Recipe> filterByTitle(String title) {
         for (Recipe recipe : getRecipes()) {
-            // TODO Changer "Objects..nonNull"
-            selection.addAll(recipes.parallelStream().filter(Objects::nonNull).collect(Collectors.toSet()));
+            selection.addAll(recipes.parallelStream().filter(c -> c.getTitle() == title).collect(Collectors.toSet()));
         }
         return selection;
     }
