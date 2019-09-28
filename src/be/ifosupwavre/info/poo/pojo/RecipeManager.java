@@ -6,18 +6,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RecipeManager {
-    /*
-            Set recipe
-
-            addRecipe()
-            removeRecipe()
-            updateRecipe()
-            containsRecipe()
-            getRecipes()
-            filterByTags()
-            filterByTitle()
-            filterBy...
-             */
     private Set<Recipe> recipes = new HashSet<>();
     public Set<Recipe> selection = new HashSet<>();
 
@@ -65,9 +53,7 @@ public class RecipeManager {
     }
 
     public Set<Recipe> filterByTitle(String title) {
-        for (Recipe recipe : getRecipes()) {
-            selection.addAll(recipes.parallelStream().filter(c -> c.getTitle() == title).collect(Collectors.toSet()));
-        }
+        selection.addAll(recipes.parallelStream().filter(c -> c.getTitle() == title).collect(Collectors.toSet()));
         return selection;
     }
 }
