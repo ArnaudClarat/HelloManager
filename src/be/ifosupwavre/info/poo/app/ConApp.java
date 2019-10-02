@@ -11,6 +11,13 @@ public class ConApp {
         recipeManager.addRecipe(new Recipe("Omelette"));
         recipeManager.addRecipe(new Recipe("Steak"));
 
-        System.out.println(recipeManager.filterByTitle("Burger"));
+        var rec1 = new Recipe.Builder()
+                .putSubTitle("Bidule")
+                .putTitle("Machin")
+                .putTime(15)
+                .build();
+        recipeManager.addRecipe(rec1);
+
+        System.out.println(recipeManager.filterByTitle("Machin"));
     }
 }
