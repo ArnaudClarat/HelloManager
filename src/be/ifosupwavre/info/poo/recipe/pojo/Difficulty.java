@@ -1,4 +1,4 @@
-package be.ifosupwavre.info.poo.pojo;
+package be.ifosupwavre.info.poo.recipe.pojo;
 
 public enum Difficulty {
     VERY_EASY("Très facile"),

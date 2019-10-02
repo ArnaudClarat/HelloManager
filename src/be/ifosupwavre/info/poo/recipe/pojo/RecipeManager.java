@@ -1,4 +1,4 @@
-package be.ifosupwavre.info.poo.pojo;
+package be.ifosupwavre.info.poo.recipe.pojo;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -6,8 +6,20 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RecipeManager {
+    /*
+            Set recipe
+
+            addRecipe()
+            removeRecipe()
+            updateRecipe()
+            containsRecipe()
+            getRecipes()
+            filterByTags()
+            filterByTitle()
+            filterBy...
+             */
     private Set<Recipe> recipes = new HashSet<>();
-    public Set<Recipe> selection = new HashSet<>();
+    private Set<Recipe> selection = new HashSet<>();
 
     public void addRecipe(Recipe args) {
         recipes.add(args);
@@ -53,7 +65,9 @@ public class RecipeManager {
     }
 
     public Set<Recipe> filterByTitle(String title) {
-        selection.addAll(recipes.parallelStream().filter(c -> c.getTitle() == title).collect(Collectors.toSet()));
+        for (Recipe recipe : getRecipes()) {
+            selection.addAll(recipes.parallelStream().filter(c -> c.getTitle().equals(title)).collect(Collectors.toSet()));
+        }
         return selection;
     }
 }

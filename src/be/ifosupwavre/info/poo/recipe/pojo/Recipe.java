@@ -1,5 +1,6 @@
-package be.ifosupwavre.info.poo.pojo;
+package be.ifosupwavre.info.poo.recipe.pojo;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Recipe {
@@ -20,6 +21,7 @@ public class Recipe {
      */
 
     public Recipe(String title, String subtitle, Category category, Difficulty difficulty, int time, int expDay, Set<Ingredient> ingredients) {
+        this();
         this.title = title;
         this.subtitle = subtitle;
         this.category = category;
@@ -31,9 +33,14 @@ public class Recipe {
 
 /*
     public Recipe(String title) {
+        this();
         this.title = title;
     }
 */
+
+    private Recipe() {
+        this.ingredients = new HashSet<>();
+    }
 
     public String getTitle() {
         return title;
@@ -91,8 +98,56 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    private void addIngredient(Ingredient ingredient){}
+
     @Override
     public String toString() {
-        return title + " " + subtitle;
+        return title + " " + subtitle + " " + time;
+        //return MessageFormat.format("{} {} {}", title, subtitle, time);
+    }
+
+     public static class Builder{
+        private Recipe recipe = new Recipe();
+
+        public Builder putTitle(String title){
+            recipe.setTitle(title);
+            return this;
+        }
+
+        public Builder putSubTitle(String subtitle){
+            recipe.setSubtitle(subtitle);
+            return this;
+        }
+
+        public Builder putCategory(Category category){
+            recipe.setCategory(category);
+            return this;
+        }
+
+        public Builder putDifficulty(Difficulty difficulty){
+            recipe.setDifficulty(difficulty);
+            return this;
+        }
+
+        public Builder putTime(int time){
+            recipe.setTime(time);
+            return this;
+        }
+
+        public Builder putExpDay(int day){
+            recipe.setExpDay(day);
+            return this;
+        }
+
+        public Builder addIngredients(Ingredient... ingredients){
+            for(Ingredient ingredient : ingredients){
+                recipe.addIngredient(ingredient);
+            }
+            return this;
+        }
+
+        public Recipe build(){
+            return recipe;
+        }
     }
 }
