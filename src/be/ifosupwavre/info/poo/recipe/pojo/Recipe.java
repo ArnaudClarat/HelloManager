@@ -1,6 +1,5 @@
-package be.ifosupwavre.info.poo.pojo;
+package be.ifosupwavre.info.poo.recipe.pojo;
 
-import java.text.MessageFormat;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -101,8 +100,8 @@ public class Recipe {
 
     @Override
     public String toString() {
-        //return title + " " + subtitle + " " + String.valueOf(time);
-        return MessageFormat.format("{} {} {}", title, subtitle, time);
+        return title + " " + subtitle + " " + String.valueOf(time);
+        //return MessageFormat.format("{} {} {}", title, subtitle, time);
     }
 
      public static class Builder{

@@ -1,4 +1,4 @@
-package be.ifosupwavre.info.poo.pojo;
+package be.ifosupwavre.info.poo.recipe.pojo;
 
 import java.util.HashSet;
 import java.util.Objects;
