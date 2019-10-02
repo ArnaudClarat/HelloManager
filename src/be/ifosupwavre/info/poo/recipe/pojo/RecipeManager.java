@@ -19,7 +19,7 @@ public class RecipeManager {
             filterBy...
              */
     private Set<Recipe> recipes = new HashSet<>();
-    public Set<Recipe> selection = new HashSet<>();
+    private Set<Recipe> selection = new HashSet<>();
 
     public void addRecipe(Recipe args) {
         recipes.add(args);
@@ -66,7 +66,7 @@ public class RecipeManager {
 
     public Set<Recipe> filterByTitle(String title) {
         for (Recipe recipe : getRecipes()) {
-            selection.addAll(recipes.parallelStream().filter(c -> c.getTitle() == title).collect(Collectors.toSet()));
+            selection.addAll(recipes.parallelStream().filter(c -> c.getTitle().equals(title)).collect(Collectors.toSet()));
         }
         return selection;
     }

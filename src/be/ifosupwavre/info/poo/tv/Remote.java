@@ -1,12 +1,12 @@
 package be.ifosupwavre.info.poo.tv;
 
 public class Remote {
-    private int widht;
+    private int width;
     private int height;
     private int depth;
 
-    private Button[] buttons = new Button[5];
     private Diode diode;
+    Button[] buttons = new Button[5];
 
     public Remote(){
         for (int i = 0; i < 5; i++) {
@@ -26,11 +26,9 @@ public class Remote {
 
 class Button {
     private int code;
-    private String label;
 
     public Button(int code, String label){
         this.code = code;
-        this.label = label;
     }
 
     public int pushButton(){
@@ -42,6 +40,6 @@ class Diode {
     private String color;
 
     public void sendCode(int code){
-        System.out.println("Emmiting" + code);
+        System.out.println("Emitting" + code);
     }
 }

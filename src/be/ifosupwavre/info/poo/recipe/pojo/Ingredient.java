@@ -33,10 +33,12 @@ public class Ingredient {
     public void setUnit(Unit unit) {
         this.unit = unit;
     }
+    /*
     public void poo(String bar, int val, float tmp){
 
     }
     public void poo(String bar){
         poo(bar, 2, 3f);
     }
+     */
 }

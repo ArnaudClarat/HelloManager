@@ -100,7 +100,7 @@ public class Recipe {
 
     @Override
     public String toString() {
-        return title + " " + subtitle + " " + String.valueOf(time);
+        return title + " " + subtitle + " " + time;
         //return MessageFormat.format("{} {} {}", title, subtitle, time);
     }
 
