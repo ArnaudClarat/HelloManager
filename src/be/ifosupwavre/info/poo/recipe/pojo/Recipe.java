@@ -31,12 +31,10 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
-/*
     public Recipe(String title) {
         this();
         this.title = title;
     }
-*/
 
     private Recipe() {
         this.ingredients = new HashSet<>();

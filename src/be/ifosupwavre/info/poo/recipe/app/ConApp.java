@@ -4,7 +4,7 @@ import be.ifosupwavre.info.poo.recipe.pojo.Recipe;
 import be.ifosupwavre.info.poo.recipe.pojo.RecipeManager;
 
 class ConApp {
-    public static void main() {
+    public static void main(String[] args) {
         RecipeManager recipeManager = new RecipeManager();
 
         recipeManager.addRecipe(new Recipe("Burger"));
