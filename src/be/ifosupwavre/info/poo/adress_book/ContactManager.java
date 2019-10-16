@@ -67,18 +67,25 @@ public class ContactManager {
 		}*/
 		Predicate<Contact> predicate = null;
 		if (name != null) {
-			predicate = contact ->
+			Predicate<Contact> temp = contact ->
 					contact.getFirstName().contains(name) ||
 					contact.getLastName().contains(name);
+			predicate = temp;
 		}
 		if (zipcode != 0) {
-			predicate = contact ->
-					contact.getZipcode() == zipcode;
+			Predicate<Contact> temp = contact -> contact.getZipcode() == zipcode;
+			if (predicate == null) {
+				predicate = temp;
+			} else {
+				predicate = predicate.and(temp);
+			}
+			
 		}
-		
 		if (predicate == null) {
 			predicate = Objects::nonNull;
 		}
-		return contacts.parallelStream().filter(predicate).collect(Collectors.toList());
+		var out = contacts.parallelStream().filter(predicate).collect(Collectors.toList());
+		if (out.isEmpty()) {System.err.println("Personne");}
+		return out;
 	}
 }
