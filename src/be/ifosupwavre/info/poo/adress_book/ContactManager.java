@@ -2,6 +2,9 @@ package be.ifosupwavre.info.poo.adress_book;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class ContactManager {
 	private List<Contact> contacts = new ArrayList<>();
@@ -40,5 +43,42 @@ public class ContactManager {
 		this.contacts = contacts;
 	}
 	
-	
+	List<Contact> filter(String name, int zipcode){
+		/*Predicate predicate = new Predicate<Contact>() {
+			@Override
+			public boolean test(Contact contact) {
+				return false;
+			}
+			
+			@Override
+			public Predicate<Contact> and(Predicate<? super Contact> other) {
+				return null;
+			}
+			
+			@Override
+			public Predicate<Contact> negate() {
+				return null;
+			}
+			
+			@Override
+			public Predicate<Contact> or(Predicate<? super Contact> other) {
+				return null;
+			}
+		}*/
+		Predicate<Contact> predicate = null;
+		if (name != null) {
+			predicate = contact ->
+					contact.getFirstName().contains(name) ||
+					contact.getLastName().contains(name);
+		}
+		if (zipcode != 0) {
+			predicate = contact ->
+					contact.getZipcode() == zipcode;
+		}
+		
+		if (predicate == null) {
+			predicate = Objects::nonNull;
+		}
+		return contacts.parallelStream().filter(predicate).collect(Collectors.toList());
+	}
 }
