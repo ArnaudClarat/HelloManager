@@ -2,6 +2,9 @@ package be.ifosupwavre.info.poo.adress_book;
 
 import org.fluttercode.datafactory.impl.DataFactory;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class MainApp {
 	public static void main(String[] args) {
 		ContactManager contactManager = new ContactManager();
@@ -9,7 +12,7 @@ public class MainApp {
 		
 		
 		System.out.println("Création des contacts...");
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 10; i++) {
 			Contact contact = new ContactBuilder()
 					.setFirstName(factory.getFirstName())
 					.setLastName(factory.getLastName())
@@ -23,7 +26,23 @@ public class MainApp {
 			contactManager.addContact(contact);
 		}
 		
-		System.out.println("Affichage des contacts :");
+		System.out.println("\n\tAffichage des contacts :");
 		contactManager.getContacts().forEach(System.out::println);
+		
+		System.out.println("\n\tAffiche détaillé :");
+		contactManager.getContacts().forEach(contact ->
+				System.out.println(
+						contact.getFirstName() + " " +
+						contact.getLastName() + " " +
+						contact.getAddress() + " " +
+						contact.getZipcode() + " " +
+						contact.getCity() )
+		);
+		
+		System.out.println("\n\tTest recherche :");
+		List<Contact> filtered = contactManager.getContacts().parallelStream()
+				.filter(contact -> contact.getFirstName().contains("Lee"))
+				.collect(Collectors.toList());
+		filtered.forEach(System.out::println);
 	}
 }

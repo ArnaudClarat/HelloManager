@@ -39,4 +39,6 @@ public class ContactManager {
 	public void setContacts(List<Contact> contacts) {
 		this.contacts = contacts;
 	}
+	
+	
 }
