@@ -24,8 +24,6 @@ public class MainApp {
 		}
 		
 		System.out.println("Affichage des contacts :");
-		for (Contact contact : contactManager.getContacts()) {
-			System.out.println(contact);
-		}
+		contactManager.getContacts().forEach(System.out::println);
 	}
 }
