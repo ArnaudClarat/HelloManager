@@ -1,5 +1,6 @@
 package be.ifosupwavre.info.poo.recipe.pojo;
 
+import java.text.MessageFormat;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ public class Recipe {
     private int expDay;
     private Set<Ingredient> ingredients;
 
-    /*
+    /* TODO
         addIngredient()
         removeIngredient()
         updateIngredient()
@@ -21,7 +22,6 @@ public class Recipe {
      */
 
     public Recipe(String title, String subtitle, Category category, Difficulty difficulty, int time, int expDay, Set<Ingredient> ingredients) {
-        this();
         this.title = title;
         this.subtitle = subtitle;
         this.category = category;
@@ -31,15 +31,15 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
-    public Recipe(String title) {
-        this();
+    public Recipe(String title, String subtitle) {
         this.title = title;
+        this.subtitle = subtitle;
     }
 
     private Recipe() {
         this.ingredients = new HashSet<>();
     }
-
+    
     public String getTitle() {
         return title;
     }
@@ -100,8 +100,8 @@ public class Recipe {
 
     @Override
     public String toString() {
-        return title + " " + subtitle + " " + time;
-        //return MessageFormat.format("{} {} {}", title, subtitle, time);
+        return title + " " + subtitle + " " + category;
+        //return MessageFormat.format("{} {} {}", title, subtitle, category);
     }
 
      public static class Builder{

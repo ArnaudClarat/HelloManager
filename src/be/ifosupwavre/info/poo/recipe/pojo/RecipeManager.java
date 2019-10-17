@@ -8,20 +8,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class RecipeManager {
-    /*
-            Set recipe
-
-            addRecipe()
-            removeRecipe()
-            updateRecipe()
-            containsRecipe()
-            getRecipes()
-            filterByTags()
-            filterByTitle()
-            filterBy...
-             */
     private Set<Recipe> recipes = new HashSet<>();
-    private Set<Recipe> selection = new HashSet<>();
 
     public void addRecipe(Recipe args) {
         recipes.add(args);
