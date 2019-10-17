@@ -10,7 +10,7 @@ class ConApp {
 
         recipeManager.addRecipe(new Recipe("Burger", "Hamburger"));
         recipeManager.addRecipe(new Recipe("Omelette", "Omelette nature"));
-        recipeManager.addRecipe(new Recipe("Steak", "Steak de boeuf 200g"));
+        recipeManager.addRecipe(new Recipe("Steak", "Steak de bœuf 200g"));
         recipeManager.addRecipe(new Recipe("Machin", "Bidule"));
 
         var rec1 = new Recipe.Builder()
@@ -20,6 +20,6 @@ class ConApp {
                 .build();
         recipeManager.addRecipe(rec1);
 
-        System.out.println(recipeManager.filter("Machin",null,null,0,0,null));
+        System.out.println(recipeManager.filter("Steak",null,null,0,0,null));
     }
 }

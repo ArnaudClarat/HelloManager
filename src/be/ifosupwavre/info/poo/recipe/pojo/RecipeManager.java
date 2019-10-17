@@ -2,7 +2,6 @@ package be.ifosupwavre.info.poo.recipe.pojo;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -82,7 +81,7 @@ public class RecipeManager {
         }
         if (ingredients != null) {
             for (Ingredient ingredient:ingredients) {
-                temp = temp.or(recipe -> recipe.getIngredients().contains(ingredient));
+                temp = recipe -> recipe.getIngredients().contains(ingredient);
             }
             if (predicate == null) {
                 predicate = temp;
@@ -90,7 +89,6 @@ public class RecipeManager {
                 predicate = predicate.and(temp);
             }
         }
-        var out = recipes.parallelStream().filter(predicate).collect(Collectors.toSet());
-        return out;
+        return recipes.parallelStream().filter(predicate).collect(Collectors.toSet());
     }
 }
