@@ -19,6 +19,6 @@ class ConApp {
                 .build();
         recipeManager.addRecipe(rec1);
 
-        System.out.println(recipeManager.filterByTitle("Machin"));
+        System.out.println(recipeManager.filter("Machin",null,null,0,0,null));
     }
 }

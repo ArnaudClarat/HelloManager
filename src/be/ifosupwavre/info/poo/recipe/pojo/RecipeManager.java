@@ -1,8 +1,10 @@
 package be.ifosupwavre.info.poo.recipe.pojo;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class RecipeManager {
@@ -53,21 +55,55 @@ public class RecipeManager {
         return recipes;
     }
 
-    public Set<Recipe> filterByTags(String tag, Category category, Difficulty difficulty, int time) {
-        if (!tag.isEmpty()) {
-            var tags = tag.split(" ");
-            for (var t : tags) {
-                // TODO Changer "Objects..nonNull"
-                selection.addAll(recipes.parallelStream().filter(Objects::nonNull).collect(Collectors.toSet()));
+    public Set<Recipe> filter(String title, Category category, Difficulty difficulty, int time, int expDay, List<Ingredient> ingredients) {
+        Predicate<Recipe> predicate = null;
+        Predicate<Recipe> temp = null;
+        if (title != null) {
+            predicate = recipe -> recipe.getTitle().contains(title) || recipe.getSubtitle().contains(title);
+        }
+        if (category != null) {
+            temp = recipe -> recipe.getCategory().equals(category);
+            if (predicate == null) {
+                predicate = temp;
+            } else {
+                predicate = predicate.and(temp);
             }
         }
-        return selection;
-    }
-
-    public Set<Recipe> filterByTitle(String title) {
-        for (Recipe recipe : getRecipes()) {
-            selection.addAll(recipes.parallelStream().filter(c -> c.getTitle().equals(title)).collect(Collectors.toSet()));
+        if (difficulty != null) {
+            temp = recipe -> recipe.getDifficulty().equals(difficulty);
+            if (predicate == null) {
+                predicate = temp;
+            } else {
+                predicate = predicate.and(temp);
+            }
         }
-        return selection;
+        if (time != 0) {
+            temp = recipe -> recipe.getTime() == time;
+            if (predicate == null) {
+                predicate = temp;
+            } else {
+                predicate = predicate.and(temp);
+            }
+        }
+        if (expDay != 0) {
+            temp = recipe -> recipe.getExpDay() == expDay;
+            if (predicate == null) {
+                predicate = temp;
+            } else {
+                predicate = predicate.and(temp);
+            }
+        }
+        if (ingredients != null) {
+            for (Ingredient ingredient:ingredients) {
+                temp = temp.or(recipe -> recipe.getIngredients().contains(ingredient));
+            }
+            if (predicate == null) {
+                predicate = temp;
+            } else {
+                predicate = predicate.and(temp);
+            }
+        }
+        var out = recipes.parallelStream().filter(predicate).collect(Collectors.toSet());
+        return out;
     }
 }
