@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class ContactManager {
 	private List<Contact> contacts = new ArrayList<>();
 	
+	
 	public boolean addContact(Contact contact){
 		if (!contacts.contains(contact)) {
 			return contacts.add(contact);
@@ -26,9 +27,9 @@ public class ContactManager {
 		}
 	}
 	
-	public boolean deleteContact(int index){
-		if (contacts.contains(index)) {
-			contacts.remove(index);
+	public boolean deleteContact(int pNumber){
+		if ((contacts.forEach(contact -> contact.getPhoneNumber() == pNumber)) != null) {
+			contacts.remove(pNumber);
 			return true;
 		} else {
 			return false;
@@ -67,10 +68,9 @@ public class ContactManager {
 		}*/
 		Predicate<Contact> predicate = null;
 		if (name != null) {
-			Predicate<Contact> temp = contact ->
+			predicate = contact ->
 					contact.getFirstName().contains(name) ||
 					contact.getLastName().contains(name);
-			predicate = temp;
 		}
 		if (zipcode != 0) {
 			Predicate<Contact> temp = contact -> contact.getZipcode() == zipcode;

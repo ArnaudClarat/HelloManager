@@ -8,12 +8,12 @@ public class Contact {
 	private String address;
 	private String city;
 	private int zipcode;
-	private String phoneNumber;
+	private int phoneNumber;
 	private String email;
 	private LocalDate birthday;
 	
 	
-	Contact(String firstName, String lastName, String address, String city, int zipcode, String phoneNumber, String email, LocalDate birthday) {
+	Contact(String firstName, String lastName, String address, String city, int zipcode, int phoneNumber, String email, LocalDate birthday) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -60,11 +60,11 @@ public class Contact {
 		this.zipcode = zipcode;
 	}
 	
-	public String getPhoneNumber() {
+	public int getPhoneNumber() {
 		return phoneNumber;
 	}
 	
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
