@@ -86,6 +86,7 @@ public class RecipeManager {
             if (predicate == null) {
                 predicate = temp;
             } else {
+                assert temp != null;
                 predicate = predicate.and(temp);
             }
         }
