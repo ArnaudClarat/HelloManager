@@ -27,13 +27,12 @@ public class ContactManager {
 		}
 	}
 	
-	public boolean deleteContact(int pNumber){
-		if ((contacts.forEach(contact -> contact.getPhoneNumber() == pNumber)) != null) {
-			contacts.remove(pNumber);
-			return true;
-		} else {
-			return false;
-		}
+	public void deleteContact(String pNumber){
+		contacts.forEach(contact -> {
+			if (contact.getPhoneNumber().equals(pNumber)) {
+				contacts.remove(pNumber);
+			}
+		});
 	}
 	
 	public List<Contact> getContacts() {
