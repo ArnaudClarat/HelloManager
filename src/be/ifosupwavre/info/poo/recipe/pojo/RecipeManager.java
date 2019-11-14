@@ -90,6 +90,7 @@ public class RecipeManager {
                 predicate = predicate.and(temp);
             }
         }
+        assert predicate != null;
         return recipes.parallelStream().filter(predicate).collect(Collectors.toSet());
     }
 }
